@@ -1,3 +1,4 @@
+
 export const REGISTER_USER = 'register_user';
 export const registerUser = (data) => async (dispatch, getState, api) => {
 
@@ -11,13 +12,9 @@ export const registerUser = (data) => async (dispatch, getState, api) => {
 
 
 export const FETCH_CURRENT_USER = 'fetch_current_user';
-export const fetchCurrentUser = (data) => async (dispatch, getState, api) => {
- const header = {
-    'Accept': 'application/json',
-    'Content-Type':'application/x-www-form-urlencoded',
-    'Authorization':data
- }
-  const res = await api.get('/current_user',header);
+export const fetchCurrentUser = () => async (dispatch, getState, api) => {
+
+  const res = await api.get('/current_user');
 
   dispatch({
     type: FETCH_CURRENT_USER,
@@ -34,3 +31,15 @@ export const signin = (data) => async (dispatch, getState, api) => {
     payload: res
   });
 };
+
+export const LOGOUTUSER = 'logoutuser';
+export const logoutuser = (data) => async (dispatch, getState, api) => {
+
+  const res = await api.post('/logout',{cookies:data});
+ 
+  dispatch({
+    type: LOGOUTUSER,
+    payload: res
+  });
+};
+

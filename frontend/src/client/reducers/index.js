@@ -3,6 +3,6 @@ import userReducer from './userReducer';
 import authReducer from './authReducer';
 
 export default combineReducers({
-  admins: userReducer,
+  admin: userReducer,
   auth: authReducer,
 });

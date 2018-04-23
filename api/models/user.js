@@ -15,6 +15,9 @@ var UserSchema = new Schema({
         },
   password: {
         type: String,
+    },
+    session:{
+        type: String 
     }
 });
 

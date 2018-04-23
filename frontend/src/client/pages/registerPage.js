@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions';
-//import requireAuth from '../components/hocs/requireAuth';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class RegisterPage extends Component {
 
     componentWillReceiveProps(nextprops){
      const {user,history}=nextprops;
-     if(user.admins.success){
+     if(user.admin.success){
       history.push('/login');
      }
     }

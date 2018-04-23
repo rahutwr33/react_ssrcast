@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signin } from '../actions';
 
-//import requireAuth from '../components/hocs/requireAuth';
-
 class LoginPage extends Component {
   
   constructor(props){
@@ -17,13 +15,13 @@ class LoginPage extends Component {
 
   }
   componentDidMount(){
-    console.log(this.props)
+   
   }
 
  componentWillReceiveProps(nextprops){
+  
   const {loginuser,history}= nextprops;
- console.log("1111111111",nextprops)
-  if(loginuser.admins.success){
+  if(loginuser.admin.success){
      history.push('/dashboard');
   }
  }
@@ -81,5 +79,7 @@ function mapStateToProps(state) {
 }
 
 export default {
-  component: connect(mapStateToProps, { signin })(LoginPage)
+  component: connect(mapStateToProps, { signin })
+   (LoginPage)
+  
 };

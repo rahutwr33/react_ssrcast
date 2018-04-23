@@ -1,11 +1,11 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { renderRoutes } from 'react-router-config';
-import Header from './components/Header';
+import Header from './pages/Header';
 import { fetchCurrentUser } from './actions';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
-
-const App = ({ route }) => {
+import route from './Routes'
+const App =({route})=>{
   
  
   return (
@@ -14,6 +14,7 @@ const App = ({ route }) => {
       {renderRoutes(route.routes)}
     </div>
   );
+ 
 };
 
 export default {
