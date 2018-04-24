@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './App';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/homePage';
 import RegisterPage from './pages/registerPage';
 import LoginPage from './pages/loginPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -12,7 +12,7 @@ export default [
     ...App,
     routes: [
       {
-        component:HomePage,
+       ...HomePage,
         path: '/',
         exact: true
       },

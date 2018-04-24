@@ -8435,9 +8435,9 @@ var _App = __webpack_require__(477);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _HomePage = __webpack_require__(482);
+var _homePage = __webpack_require__(498);
 
-var _HomePage2 = _interopRequireDefault(_HomePage);
+var _homePage2 = _interopRequireDefault(_homePage);
 
 var _registerPage = __webpack_require__(490);
 
@@ -8458,11 +8458,10 @@ var _dashboardpage2 = _interopRequireDefault(_dashboardpage);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = [_extends({}, _App2.default, {
-  routes: [{
-    component: _HomePage2.default,
+  routes: [_extends({}, _homePage2.default, {
     path: '/',
     exact: true
-  }, _extends({}, _registerPage2.default, {
+  }), _extends({}, _registerPage2.default, {
     path: '/register'
   }), _extends({}, _loginPage2.default, {
     path: '/login'
@@ -39974,95 +39973,7 @@ function cleanCookies() {
 }
 
 /***/ }),
-/* 482 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(62);
-
-var _actions = __webpack_require__(38);
-
-var _reactHelmet = __webpack_require__(185);
-
-var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Home = function (_React$Component) {
-  _inherits(Home, _React$Component);
-
-  function Home(props) {
-    _classCallCheck(this, Home);
-
-    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
-  }
-
-  _createClass(Home, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
-    //this.props.getmeta('Home');
-
-
-    // head() {
-    //   return (
-    //     <Helmet>
-    //       <title>{`${this.props.admin && this.props.admin.title}`}</title>
-    //      </Helmet>
-    //   );
-    // }
-
-  }, {
-    key: 'render',
-    value: function render() {
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'center-align', style: { marginTop: '200px' } },
-        _react2.default.createElement(
-          'h3',
-          null,
-          'Welcome'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Check out these awesome features'
-        )
-      );
-    }
-  }]);
-
-  return Home;
-}(_react2.default.Component);
-
-;
-
-function mapStateToProps(state) {
-
-  return state;
-}
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { getmeta: _actions.getmeta })(Home);
-
-/***/ }),
+/* 482 */,
 /* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -41234,7 +41145,8 @@ var LoginPage = function (_Component) {
           'title',
           null,
           '' + this.props.meta.title
-        )
+        ),
+        _react2.default.createElement('meta', { name: 'description', content: '' + this.props.meta.description })
       );
     }
   }, {
@@ -41534,6 +41446,110 @@ exports.default = function () {
     default:
       return state;
   }
+};
+
+/***/ }),
+/* 498 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(62);
+
+var _actions = __webpack_require__(38);
+
+var _reactHelmet = __webpack_require__(185);
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HomePage = function (_Component) {
+  _inherits(HomePage, _Component);
+
+  function HomePage(props) {
+    _classCallCheck(this, HomePage);
+
+    return _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props));
+  }
+
+  _createClass(HomePage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.getmeta('Home');
+    }
+  }, {
+    key: 'head',
+    value: function head() {
+
+      return _react2.default.createElement(
+        _reactHelmet2.default,
+        null,
+        _react2.default.createElement(
+          'title',
+          null,
+          '' + this.props.meta.title
+        ),
+        _react2.default.createElement('meta', { name: 'description', content: '' + this.props.meta.description })
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'center-align', style: { marginTop: '200px' } },
+        this.head(),
+        _react2.default.createElement(
+          'h3',
+          null,
+          'Welcome'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Check out these awesome features'
+        )
+      );
+    }
+  }]);
+
+  return HomePage;
+}(_react.Component);
+
+;
+
+function mapStateToProps(state) {
+
+  return state;
+}
+
+function loadData(store) {
+  return store.dispatch((0, _actions.getmeta)('Home'));
+}
+
+exports.default = {
+  loadData: loadData,
+  component: (0, _reactRedux.connect)(mapStateToProps, { getmeta: _actions.getmeta })(HomePage)
+
 };
 
 /***/ })

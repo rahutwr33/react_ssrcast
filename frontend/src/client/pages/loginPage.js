@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signin } from '../actions';
-import {getmeta } from '../actions'
+import { signin ,getmeta} from '../actions';
 import Helmet from "react-helmet";
 class LoginPage extends Component {
   
@@ -33,6 +32,7 @@ class LoginPage extends Component {
   return (
     <Helmet>
       <title>{`${this.props.meta.title}`}</title>
+      <meta name="description" content={`${this.props.meta.description}`}/>
      </Helmet>
   );
 }
