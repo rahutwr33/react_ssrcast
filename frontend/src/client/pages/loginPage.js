@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signin } from '../actions';
-
+import {getmeta } from '../actions'
+import Helmet from "react-helmet";
 class LoginPage extends Component {
   
   constructor(props){
@@ -15,16 +16,26 @@ class LoginPage extends Component {
 
   }
   componentDidMount(){
-   
+    this.props.getmeta('Login');
   }
 
  componentWillReceiveProps(nextprops){
   
-  const {loginuser,history}= nextprops;
-  if(loginuser.admin.success){
-     history.push('/dashboard');
+  const {admin,history}= nextprops;
+  if(admin!=null){
+     //history.push('/dashboard');
+     location.replace('/dashboard')
   }
  }
+
+ head() {
+  
+  return (
+    <Helmet>
+      <title>{`${this.props.meta.title}`}</title>
+     </Helmet>
+  );
+}
 
 _changed(field, value){
       const next = {
@@ -41,6 +52,7 @@ _changed(field, value){
   render() {
     return (
              <div className="container">
+              {this.head()}
                 <div>
                     <div  style={Style.formstyle}>
                         <label>Email</label>
@@ -75,11 +87,18 @@ export const Style = {
 };
 
 function mapStateToProps(state) {
-  return { loginuser: state };
+
+  return state
 }
 
+function loadData(store) {
+  return store.dispatch(getmeta('Login'));
+}
+
+
 export default {
-  component: connect(mapStateToProps, { signin })
+   loadData,
+  component: connect(mapStateToProps, { signin ,getmeta})
    (LoginPage)
   
 };

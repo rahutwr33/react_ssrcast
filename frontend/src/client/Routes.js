@@ -12,7 +12,7 @@ export default [
     ...App,
     routes: [
       {
-        ...HomePage,
+        component:HomePage,
         path: '/',
         exact: true
       },

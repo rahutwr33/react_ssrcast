@@ -6,6 +6,7 @@ var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../models/user");
 var Book = require("../models/book");
+var Meta = require("../models/meta");
 
 
 
@@ -63,21 +64,25 @@ let data = {
 
 
 router.get('/current_user', function(req, res) {
- 
-    let token = req.cookies.token;
-    var decoded = jwt.verify(token, config.secret);
-     
-    User.findById(mongoose.Types.ObjectId(decoded.user),function(err, user) {
-     if(err){
-      res.json({code:404,success:false,message:"something wrong"})
-     }else{
-       if(user){
-         if(user.session==token){
-          res.json({code:200,success:true,message:"user successfully found",data:user})
-         }
-        }
-     }
-    })
+    if(req.cookies.token==undefined){
+      res.json({code:404,success:false,message:"user not found"})
+    }else{
+      let token = req.cookies.token;
+      var decoded = jwt.verify(token, config.secret);
+       
+      User.findById(mongoose.Types.ObjectId(decoded.user),function(err, user) {
+       if(err){
+        res.json({code:404,success:false,message:"something wrong"})
+       }else{
+       
+         if(user){
+           if(user.session==token){
+            res.json({code:200,success:true,message:"user successfully found",data:user})
+           }
+          }
+       }
+      })
+    }
   });
 
   router.post('/logout', function(req, res) {
@@ -89,7 +94,6 @@ router.get('/current_user', function(req, res) {
      if(err){
       res.json({code:404,success:false,message:"something wrong"})
      }else{
-    
        if(user){
          user.session = ""
          user.save(function(err,updatesession){
@@ -99,6 +103,18 @@ router.get('/current_user', function(req, res) {
      }
     })
   });
+
+  router.get('/meta', function(req, res) {
+    Meta.findOne({path:req.query.path},function(err,metadata){
+      if(err){
+        res.json({code:404,success:false,message:'something went wrong'})
+      }else{
+        res.json({code:200,success:true,data:metadata})
+      }
+    })
+    
+  });
+
 
 
 

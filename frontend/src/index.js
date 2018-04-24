@@ -40,7 +40,7 @@ app.get('*', (req, res) => {
     if (context.notFound) {
       res.status(404);
     }
-
+    
     res.send(content);
   });
 });

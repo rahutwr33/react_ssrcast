@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { renderToString,ReactDOMServer } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet';
 import Routes from '../client/Routes';
 
 export default (req, store, context) => {
+  //console.log(store.getState())
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.path} context={context}>
@@ -15,9 +16,9 @@ export default (req, store, context) => {
       </StaticRouter>
     </Provider>
   );
-
+  
   const helmet = Helmet.renderStatic();
-
+ 
   return `
     <html>
       <head>

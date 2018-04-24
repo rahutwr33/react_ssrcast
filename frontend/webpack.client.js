@@ -1,7 +1,7 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
-
+const Helmet = require("react-helmet");
 const config = {
   // Tell webpack the root file of our
   // server application
@@ -14,5 +14,7 @@ const config = {
     path: path.resolve(__dirname, 'public')
   }
 };
+
+externals: ['react-helmet']
 
 module.exports = merge(baseConfig, config);

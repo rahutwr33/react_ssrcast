@@ -2,7 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const webpackNodeExternals = require('webpack-node-externals');
-
+const Helmet = require("react-helmet");
 const config = {
   // Inform webpack that we're building a bundle
   // for nodeJS, rather than for the browser
@@ -19,7 +19,7 @@ const config = {
     path: path.resolve(__dirname, 'build')
   },
 
-  externals: [webpackNodeExternals()]
+  externals: [webpackNodeExternals(),'react-helmet']
 };
 
 module.exports = merge(baseConfig, config);
