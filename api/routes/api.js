@@ -5,7 +5,7 @@ var express = require('express');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../models/user");
-var Book = require("../models/book");
+var Blog = require("../models/blog");
 var Meta = require("../models/meta");
 
 
@@ -45,7 +45,7 @@ router.post('/signin', function(req, res) {
           var token = jwt.sign({ user: user._id }, config.secret);
           user.session = token;
           user.save(function(err,updatesession){
-            res.json({success: true, token:token});
+            res.json({success: true, token:token , message:'user successfully login',data:user});
           })
         } else {
           res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
@@ -55,12 +55,34 @@ router.post('/signin', function(req, res) {
   });
 });
 
-router.post('/getdata', function(req, res) {
-let data = {
-  "name":"wdaawdh"
-   }
-   res.json({success:true,data:data,message:"data retrieve successfully"})
+router.post('/addblog', function(req, res) {
+let blog = req.body;
+
+if(blog.title && blog.subject){
+  var model = new Blog();
+  model.title = blog.title;
+  model.subject = blog.subject;
+  model.article = blog.article;
+  
+  model.save(function(err,blog){
+    if(err){
+      res.json({code:404,success:false,data:err})
+    }else{
+      res.json({code:200,success:true,data:blog,message:'Blog Added sucessfully'})
+    }
+  })
+}
 });
+
+router.get('/getblog', function(req, res) {
+  Blog.find(function(err,blog){
+    if(err){
+      res.json({code:200,data:err,success:false})
+    }else{
+      res.json({code:200,data:blog,success:true,message:'blog retrieve successfully'})
+    }
+  })
+  });
 
 
 router.get('/current_user', function(req, res) {
