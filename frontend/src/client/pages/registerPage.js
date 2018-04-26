@@ -16,8 +16,14 @@ class RegisterPage extends Component {
       this._register = this._register.bind(this)
     }
 
-    componentDidMount(){
+    componentWillMount() {
+      const {user,history}=this.props;
+      if(user.auth.success){
+        history.push('/dashboard')
+      }
+
     }
+
 
     componentWillReceiveProps(nextprops){
      const {user,history}=nextprops;

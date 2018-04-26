@@ -14,6 +14,15 @@ class LoginPage extends Component {
     this._login = this._login.bind(this)
 
   }
+
+  componentWillMount(){
+    const {auth,history}=this.props;
+   
+    if(auth.success){
+      history.push('/dashboard')
+    }
+  }
+
   componentDidMount(){
     this.props.getmeta('Login');
   }
@@ -98,7 +107,7 @@ function loadData(store) {
 
 export default {
    loadData,
-  component: connect(mapStateToProps, { signin ,getmeta})
+   component: connect(mapStateToProps, { signin ,getmeta})
    (LoginPage)
   
 };

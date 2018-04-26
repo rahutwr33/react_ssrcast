@@ -2,6 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const Helmet = require("react-helmet");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = {
   // Tell webpack the root file of our
   // server application

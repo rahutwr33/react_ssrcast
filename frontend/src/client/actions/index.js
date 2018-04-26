@@ -54,5 +54,26 @@ export const getmeta = (path) => async (dispatch, getState, api) => {
   });
 };
 
+export const ADDBLOG = 'addblog';
+export const addblog = (data) => async (dispatch, getState, api) => {
+
+ const res = await api.post('/addblog',data);
+ 
+  dispatch({
+    type: ADDBLOG,
+    payload: res
+  });
+};
+export const GETBLOG = 'getblog';
+export const getblog = () => async (dispatch, getState, api) => {
+
+ const res = await api.get('/getblog');
+ 
+  dispatch({
+    type: GETBLOG,
+    payload: res
+  });
+};
+
 
 

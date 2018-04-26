@@ -22,7 +22,7 @@ export default (state =null, action) => {
       }
        return action.payload.data;
       case LOGOUTUSER:
-       return action.payload.data;
+       return {logout:action.payload.data};
       
     default:
       return state;

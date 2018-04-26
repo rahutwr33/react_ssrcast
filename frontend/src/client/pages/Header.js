@@ -1,28 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {logoutuser } from '../actions'
+import {logoutuser,fetchCurrentUser } from '../actions'
+
 
 
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 class Header extends React.Component{
-
+ 
   constructor(props){
     super(props);
     this.logout = this.logout.bind(this)
-  }
-
-  componentDidMount(){
-  
+   
   }
 
 componentWillReceiveProps(nextProps){
+
+  const {auth,history,admin,props} = nextProps;
  
-  const {auth,history} = nextProps;
-  if(auth.success){
-    location.replace('/')
+  if(admin && admin.logout && admin.logout.success){
+     location.replace('/')
   }
 }  
 
@@ -32,15 +31,18 @@ componentWillReceiveProps(nextProps){
     
   }
 
+  
+
   render(){
-    const {auth} = this.props;
+   
+     const {admin,auth} = this.props;
     
     return (
+      
         <nav>
-          
-          <div className="nav-wrapper">
+          <div className="nav-wrapper" style={Style.formstyle}>
             <Link to="/" className="brand-logo">
-              Sports System
+              Article
             </Link>
             <ul className="right">
             {
@@ -63,7 +65,12 @@ function mapStateToProps(state) {
   
   return state
 }
+export const Style = {
+  formstyle:{
+    marginLeft: 10
+  }
+
+};
 
 
-
-export default connect(mapStateToProps,{logoutuser})(Header);
+export default connect(mapStateToProps,{logoutuser})(Header)

@@ -9,6 +9,10 @@ class HomePage  extends Component{
   }
   componentDidMount(){
     this.props.getmeta('Home');
+    const {auth,history}=this.props;
+    if(auth.success){
+      history.push('/dashboard')
+    }
   }
   
 

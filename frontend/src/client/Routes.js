@@ -5,11 +5,13 @@ import RegisterPage from './pages/registerPage';
 import LoginPage from './pages/loginPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Dashboard from './pages/dashboardpage';
+import AddBlog from './pages/addBlog';
 
 
 export default [
   {
     ...App,
+    
     routes: [
       {
        ...HomePage,
@@ -27,6 +29,10 @@ export default [
       {
         ...Dashboard,
         path: '/dashboard'
+      },
+      {
+        ...AddBlog,
+        path: '/addblog'
       },
       {
         ...NotFoundPage
