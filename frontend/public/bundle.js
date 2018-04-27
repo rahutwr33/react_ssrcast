@@ -13708,7 +13708,7 @@ var Dashboard = function (_Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-
+      this.props.getmeta('Dashboard');
       this.props.getblog(this.state.currentpage);
     }
   }, {

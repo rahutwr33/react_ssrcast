@@ -31,7 +31,7 @@ class Dashboard extends Component {
   }
   
   componentDidMount() { 
-   
+    this.props.getmeta('Dashboard');
     this.props.getblog(this.state.currentpage);
   
   }
