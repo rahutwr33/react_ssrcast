@@ -39,7 +39,7 @@ router.post('/signin', function(req, res) {
     if (!user) {
       res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
     } else {
-      // check if password matches
+     
       user.comparePassword(req.body.password, function (err, isMatch) {
         if (isMatch && !err) {
           var token = jwt.sign({ user: user._id }, config.secret);
@@ -74,15 +74,63 @@ if(blog.title && blog.subject){
 }
 });
 
-router.get('/getblog', function(req, res) {
-  Blog.find(function(err,blog){
-    if(err){
-      res.json({code:200,data:err,success:false})
-    }else{
-      res.json({code:200,data:blog,success:true,message:'blog retrieve successfully'})
-    }
-  })
-  });
+// router.get('/getblog', function(req, res) {
+ 
+//   Blog.find(query,function(err,blog){
+//     if(err){
+//       res.json({code:200,data:err,success:false})
+//     }else{
+//       res.json({code:200,data:blog,success:true,message:'blog retrieve successfully'})
+//     }
+//   })
+//   });
+
+  router.get('/getblog', function(req, res, next) {
+    var perPage = 4
+    var page = req.query.page || 1
+
+    Blog.find({})
+        .skip((perPage * page) - perPage)
+        .limit(perPage)
+        .exec(function(err, blog) {
+          Blog.count().exec(function(err, count) {
+                if (err){
+                  res.json({code:200,data:err,success:false})
+                }else{
+                  res.json({code:200,
+                            data:blog,
+                            success:true,
+                            message:'blog retrieve successfully',
+                            current: page,
+                            total: Math.ceil(count / perPage)
+                          }) 
+                }
+               
+            })
+        })
+})
+
+  router.get('/getSingleblog', function(req, res) {
+   
+    Blog.findById(mongoose.Types.ObjectId(req.query.ID), function(err,blog){
+      if(err){
+        res.json({code:200,data:err,success:false})
+      }else{
+        res.json({code:200,data:blog,success:true,message:'Single blog retrieve successfully'})
+      }
+    })
+    });
+  
+    router.get('/deleteblog', function(req, res) {
+   
+      Blog.remove({_id:mongoose.Types.ObjectId(req.query.ID)}, function(err,blog){
+        if(err){
+          res.json({code:200,data:err,success:false})
+        }else{
+          res.json({code:200,success:true,message:'Blog delete successfully'})
+        }
+      })
+      });
 
 
 router.get('/current_user', function(req, res) {

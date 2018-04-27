@@ -6,6 +6,7 @@ import LoginPage from './pages/loginPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Dashboard from './pages/dashboardpage';
 import AddBlog from './pages/addBlog';
+import EditBlog from './pages/editBlog';
 
 
 export default [
@@ -33,6 +34,11 @@ export default [
       {
         ...AddBlog,
         path: '/addblog'
+      },
+      {
+        ...EditBlog,
+         path:"/editblog",
+      
       },
       {
         ...NotFoundPage

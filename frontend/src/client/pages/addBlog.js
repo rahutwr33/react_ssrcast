@@ -12,11 +12,20 @@ class AddBlog extends Component{
         this.addArticle=this.addArticle.bind(this)
     }
 
+    componentWillMount() {
+        if(!this.props.auth.success){
+          this.props.history.push('/')
+         }
+      }
+
     componentWillReceiveProps(nextProps){
-        const{blog,history}=nextProps;
-        if(blog.success){
+        
+       const{createblog,history}=nextProps;
+        if(createblog.addblog && createblog.addblog.success){
             history.push('/dashboard')
         }
+
+      
     }
 
     onChange(field, value){
@@ -34,6 +43,7 @@ class AddBlog extends Component{
       this.props.addblog(this.state)
     }
     render(){
+       
         return (
             <div className="container">
                <div  style={Style.formstyle}>
@@ -42,7 +52,8 @@ class AddBlog extends Component{
                      type="text"
                      name="title"
                      className="input-xsmall"
-                     placeholder="Title"    
+                     placeholder="Title"  
+                     value={this.state.title}  
                      onChange={(e)=>this.onChange('title',e.target.value)}
                     />
                 
@@ -51,12 +62,14 @@ class AddBlog extends Component{
                      name="subject"
                      className="input-xsmall"
                      placeholder="What's this article about?"
+                     value={this.state.subject}
                      onChange={(e)=>this.onChange('subject',e.target.value)}
                     />
                      <textarea  
                      name="article"
                      className="materialize-textarea"
                      placeholder="Write your article (in markdown)"
+                     value={this.state.article}
                      onChange={(e)=>this.onChange('article',e.target.value)}
                      ></textarea>
                      <a className="waves-effect waves-light btn" onClick={this.addArticle}>Publish Article</a>

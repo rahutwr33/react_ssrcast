@@ -63,17 +63,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 39);
+/******/ 	return __webpack_require__(__webpack_require__.s = 44);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
-
-module.exports = require("react");
-
-/***/ },
-/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -295,7 +289,7 @@ var addblog = exports.addblog = function addblog(data) {
   }();
 };
 var GETBLOG = exports.GETBLOG = 'getblog';
-var getblog = exports.getblog = function getblog() {
+var getblog = exports.getblog = function getblog(page) {
   return function () {
     var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(dispatch, getState, api) {
       var res;
@@ -304,7 +298,7 @@ var getblog = exports.getblog = function getblog() {
           switch (_context7.prev = _context7.next) {
             case 0:
               _context7.next = 2;
-              return api.get('/getblog');
+              return api.get('/getblog?page=' + page);
 
             case 2:
               res = _context7.sent;
@@ -329,6 +323,82 @@ var getblog = exports.getblog = function getblog() {
   }();
 };
 
+var GET_SINGLE_BLOG = exports.GET_SINGLE_BLOG = 'getSingleblog';
+var getSingleblog = exports.getSingleblog = function getSingleblog(data) {
+  return function () {
+    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(dispatch, getState, api) {
+      var res;
+      return regeneratorRuntime.wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              _context8.next = 2;
+              return api.get('/getSingleblog?ID=' + data);
+
+            case 2:
+              res = _context8.sent;
+
+
+              dispatch({
+                type: GET_SINGLE_BLOG,
+                payload: res
+              });
+
+            case 4:
+            case 'end':
+              return _context8.stop();
+          }
+        }
+      }, _callee8, undefined);
+    }));
+
+    return function (_x22, _x23, _x24) {
+      return _ref8.apply(this, arguments);
+    };
+  }();
+};
+
+var DELETE_BLOG = exports.DELETE_BLOG = 'deleteblog';
+var deleteblog = exports.deleteblog = function deleteblog(data) {
+  return function () {
+    var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(dispatch, getState, api) {
+      var res;
+      return regeneratorRuntime.wrap(function _callee9$(_context9) {
+        while (1) {
+          switch (_context9.prev = _context9.next) {
+            case 0:
+              _context9.next = 2;
+              return api.get('/deleteblog?ID=' + data);
+
+            case 2:
+              res = _context9.sent;
+
+
+              dispatch({
+                type: DELETE_BLOG,
+                payload: res
+              });
+
+            case 4:
+            case 'end':
+              return _context9.stop();
+          }
+        }
+      }, _callee9, undefined);
+    }));
+
+    return function (_x25, _x26, _x27) {
+      return _ref9.apply(this, arguments);
+    };
+  }();
+};
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+module.exports = require("react");
+
 /***/ },
 /* 2 */
 /***/ function(module, exports) {
@@ -345,13 +415,13 @@ module.exports = require("react-helmet");
 /* 4 */
 /***/ function(module, exports) {
 
-module.exports = require("react-router-config");
+module.exports = require("react-router-dom");
 
 /***/ },
 /* 5 */
 /***/ function(module, exports) {
 
-module.exports = require("react-router-dom");
+module.exports = require("react-router-config");
 
 /***/ },
 /* 6 */
@@ -372,7 +442,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -380,15 +450,15 @@ var _App = __webpack_require__(14);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _homePage = __webpack_require__(20);
+var _homePage = __webpack_require__(21);
 
 var _homePage2 = _interopRequireDefault(_homePage);
 
-var _registerPage = __webpack_require__(22);
+var _registerPage = __webpack_require__(23);
 
 var _registerPage2 = _interopRequireDefault(_registerPage);
 
-var _loginPage = __webpack_require__(21);
+var _loginPage = __webpack_require__(22);
 
 var _loginPage2 = _interopRequireDefault(_loginPage);
 
@@ -403,6 +473,10 @@ var _dashboardpage2 = _interopRequireDefault(_dashboardpage);
 var _addBlog = __webpack_require__(17);
 
 var _addBlog2 = _interopRequireDefault(_addBlog);
+
+var _editBlog = __webpack_require__(20);
+
+var _editBlog2 = _interopRequireDefault(_editBlog);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -419,6 +493,9 @@ exports.default = [_extends({}, _App2.default, {
     path: '/dashboard'
   }), _extends({}, _addBlog2.default, {
     path: '/addblog'
+  }), _extends({}, _editBlog2.default, {
+    path: "/editblog"
+
   }), _extends({}, _NotFoundPage2.default)]
 })];
 
@@ -441,15 +518,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(8);
 
-var _reduxThunk = __webpack_require__(37);
+var _reduxThunk = __webpack_require__(42);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _axios = __webpack_require__(27);
+var _axios = __webpack_require__(32);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _reducers = __webpack_require__(24);
+var _reducers = __webpack_require__(29);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -477,19 +554,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(36);
+var _server = __webpack_require__(41);
 
-var _reactRouterDom = __webpack_require__(5);
+var _reactRouterDom = __webpack_require__(4);
 
 var _reactRedux = __webpack_require__(2);
 
-var _reactRouterConfig = __webpack_require__(4);
+var _reactRouterConfig = __webpack_require__(5);
 
-var _serializeJavascript = __webpack_require__(38);
+var _serializeJavascript = __webpack_require__(43);
 
 var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
@@ -519,7 +596,7 @@ exports.default = function (req, store, context) {
 
   var helmet = _reactHelmet.Helmet.renderStatic();
 
-  return '\n    <html>\n      <head>\n      <meta name="viewport" content="width=device-width, initial-scale=1"\n      <meta name="google-site-verification" content="oDJ04-rmm_oEAL4HXRgd8hS-W98r_qYHnrtPXhaOFLc" />\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M" crossorigin="anonymous"></script>\n        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">\n        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>\n        <link rel="manifest" href="/manifest.json">\n        </head>\n      <body>\n        <div id="root">' + content + '</div>\n        <script>\n          window.INITIAL_STATE = ' + (0, _serializeJavascript2.default)(store.getState()) + '\n        </script>\n        <script src="bundle.js"></script>\n      </body>\n    </html>\n  ';
+  return '\n    <html>\n      <head>\n      <meta name="viewport" content="width=device-width, initial-scale=1"\n      <meta name="google-site-verification" content="oDJ04-rmm_oEAL4HXRgd8hS-W98r_qYHnrtPXhaOFLc" />\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M" crossorigin="anonymous"></script>\n        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">\n        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>\n      \n        </head>\n      <body>\n        <div id="root">' + content + '</div>\n        <script>\n          window.INITIAL_STATE = ' + (0, _serializeJavascript2.default)(store.getState()) + '\n        </script>\n        <script src="bundle.js"></script>\n      </body>\n    </html>\n  ';
 };
 
 /***/ },
@@ -553,11 +630,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterConfig = __webpack_require__(4);
+var _reactRouterConfig = __webpack_require__(5);
 
 var _Header = __webpack_require__(15);
 
@@ -565,7 +642,7 @@ var _Header2 = _interopRequireDefault(_Header);
 
 var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(0);
 
 var _universalCookie = __webpack_require__(6);
 
@@ -634,15 +711,15 @@ exports.Style = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(5);
+var _reactRouterDom = __webpack_require__(4);
 
 var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(0);
 
 var _universalCookie = __webpack_require__(6);
 
@@ -772,7 +849,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -810,13 +887,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -846,12 +923,19 @@ var AddBlog = function (_Component) {
     }
 
     _createClass(AddBlog, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            if (!this.props.auth.success) {
+                this.props.history.push('/');
+            }
+        }
+    }, {
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(nextProps) {
-            var blog = nextProps.blog,
+            var createblog = nextProps.createblog,
                 history = nextProps.history;
 
-            if (blog.success) {
+            if (createblog.addblog && createblog.addblog.success) {
                 history.push('/dashboard');
             }
         }
@@ -884,6 +968,7 @@ var AddBlog = function (_Component) {
                         name: 'title',
                         className: 'input-xsmall',
                         placeholder: 'Title',
+                        value: this.state.title,
                         onChange: function onChange(e) {
                             return _this2.onChange('title', e.target.value);
                         }
@@ -893,6 +978,7 @@ var AddBlog = function (_Component) {
                         name: 'subject',
                         className: 'input-xsmall',
                         placeholder: 'What\'s this article about?',
+                        value: this.state.subject,
                         onChange: function onChange(e) {
                             return _this2.onChange('subject', e.target.value);
                         }
@@ -901,6 +987,7 @@ var AddBlog = function (_Component) {
                         name: 'article',
                         className: 'materialize-textarea',
                         placeholder: 'Write your article (in markdown)',
+                        value: this.state.article,
                         onChange: function onChange(e) {
                             return _this2.onChange('article', e.target.value);
                         }
@@ -945,19 +1032,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Dialog = __webpack_require__(28);
+var _Dialog = __webpack_require__(33);
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _FlatButton = __webpack_require__(29);
+var _FlatButton = __webpack_require__(34);
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
-var _RaisedButton = __webpack_require__(31);
+var _RaisedButton = __webpack_require__(36);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
@@ -1013,13 +1100,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(0);
 
 var _reactHelmet = __webpack_require__(3);
 
@@ -1029,23 +1116,23 @@ var _blogDialog = __webpack_require__(18);
 
 var _blogDialog2 = _interopRequireDefault(_blogDialog);
 
-var _reactRouterDom = __webpack_require__(5);
+var _reactRouterDom = __webpack_require__(4);
 
-var _getMuiTheme = __webpack_require__(34);
+var _getMuiTheme = __webpack_require__(39);
 
 var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
 
-var _MuiThemeProvider = __webpack_require__(32);
+var _MuiThemeProvider = __webpack_require__(37);
 
 var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 
-var _colors = __webpack_require__(33);
+var _colors = __webpack_require__(38);
 
-var _FloatingActionButton = __webpack_require__(30);
+var _FloatingActionButton = __webpack_require__(35);
 
 var _FloatingActionButton2 = _interopRequireDefault(_FloatingActionButton);
 
-var _add = __webpack_require__(35);
+var _add = __webpack_require__(40);
 
 var _add2 = _interopRequireDefault(_add);
 
@@ -1065,27 +1152,73 @@ var Dashboard = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this, props));
 
-    _this.state = {};
+    _this.state = {
+      currentpage: 1,
+      paginateKey: 1
+    };
     _this.addBlog = _this.addBlog.bind(_this);
+
     return _this;
   }
 
   _createClass(Dashboard, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.props.getblog();
+      if (!this.props.auth.success) {
+        this.props.history.push('/');
+      }
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+
+      this.props.getblog(this.state.currentpage);
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+
+      if (nextProps.deleteblogreducer && nextProps.deleteblogreducer.deleteblog.success) {
+        this.props.getblog(this.state.currentpage);
+      }
     }
   }, {
     key: 'addBlog',
     value: function addBlog() {
       var history = this.props.history;
 
-
       history.push('/addblog');
+    }
+  }, {
+    key: 'deleteBlog',
+    value: function deleteBlog(ID) {
+      this.props.deleteblog(ID);
+    }
+  }, {
+    key: 'head',
+    value: function head() {
+      return _react2.default.createElement(
+        _reactHelmet2.default,
+        null,
+        _react2.default.createElement(
+          'title',
+          null,
+          '' + this.props.meta.title
+        ),
+        _react2.default.createElement('meta', { name: 'description', content: '' + this.props.meta.description })
+      );
+    }
+  }, {
+    key: 'getPaginateBlogData',
+    value: function getPaginateBlogData(page) {
+      this.setState({ paginateKey: page });
+      this.props.getblog(page);
     }
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var blog = this.props.blog;
 
 
@@ -1102,45 +1235,43 @@ var Dashboard = function (_Component) {
         userAgent: 'all'
       });
 
+      var pageNumbers = [];
+      if (blog) {
+        for (var i = 1; i <= blog.getblog.total; i++) {
+          pageNumbers.push(i);
+        }
+      }
+
       return _react2.default.createElement(
         'div',
-        { className: 'left-align', style: { margin: '50px' } },
-        _react2.default.createElement(
-          _reactHelmet2.default,
-          null,
-          _react2.default.createElement(
-            'title',
-            null,
-            '' + this.props.meta.title
-          ),
-          _react2.default.createElement('meta', { name: 'description', content: '' + this.props.meta.description })
-        ),
+        null,
+        this.head(),
         _react2.default.createElement(
           'div',
-          null,
+          { className: 'left-align', style: { margin: '50px' } },
           _react2.default.createElement(
             _MuiThemeProvider2.default,
             { muiTheme: muiTheme },
             _react2.default.createElement(
               _FloatingActionButton2.default,
-              null,
-              _react2.default.createElement(_add2.default, { title: 'Add Blog', onClick: this.addBlog })
+              { onClick: this.addBlog },
+              _react2.default.createElement(_add2.default, { title: 'Add Blog' })
             )
           )
         ),
         _react2.default.createElement(
           'div',
-          null,
-          this.props.blog && blog.data.map(function (data) {
+          { style: { marginLeft: 300 } },
+          this.props.blog && blog.getblog.data.map(function (data) {
             return _react2.default.createElement(
               'div',
-              null,
+              { key: data._id },
               _react2.default.createElement(
                 'div',
                 { className: 'row' },
                 _react2.default.createElement(
                   'div',
-                  { className: 'col s12 m6' },
+                  { className: 'col s12 m8' },
                   _react2.default.createElement(
                     'div',
                     { className: 'card blue-grey darken-1' },
@@ -1149,7 +1280,7 @@ var Dashboard = function (_Component) {
                       { className: 'card-content white-text' },
                       _react2.default.createElement(
                         'span',
-                        { className: 'card-title', key: data._id },
+                        { className: 'center card-title', key: data._id },
                         data.title
                       ),
                       _react2.default.createElement(
@@ -1162,13 +1293,13 @@ var Dashboard = function (_Component) {
                       'div',
                       { className: 'card-action' },
                       _react2.default.createElement(
-                        'a',
-                        { href: '#' },
+                        _reactRouterDom.Link,
+                        { to: '/editblog?id=' + data._id },
                         'Edit'
                       ),
                       _react2.default.createElement(
                         'a',
-                        { href: '#' },
+                        { onClick: _this2.deleteBlog.bind(_this2, data._id) },
                         'Delete'
                       )
                     )
@@ -1177,6 +1308,25 @@ var Dashboard = function (_Component) {
               )
             );
           })
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'ul',
+            { className: 'pagination center' },
+            pageNumbers.map(function (i) {
+              return _react2.default.createElement(
+                'li',
+                { key: i, className: "center " + (_this2.state.paginateKey == i ? 'active' : '') },
+                _react2.default.createElement(
+                  'a',
+                  { onClick: _this2.getPaginateBlogData.bind(_this2, i) },
+                  i
+                )
+              );
+            })
+          )
         )
       );
     }
@@ -1188,7 +1338,6 @@ var Dashboard = function (_Component) {
 ;
 
 function mapStateToProps(state) {
-
   return state;
 }
 
@@ -1198,7 +1347,7 @@ function loadData(store) {
 
 exports.default = {
   loadData: loadData,
-  component: (0, _reactRedux.connect)(mapStateToProps, { getmeta: _actions.getmeta, getblog: _actions.getblog })(Dashboard)
+  component: (0, _reactRedux.connect)(mapStateToProps, { getmeta: _actions.getmeta, getblog: _actions.getblog, deleteblog: _actions.deleteblog })(Dashboard)
 
 };
 
@@ -1210,18 +1359,173 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
+exports.Style = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(1);
+var _reactRouterDom = __webpack_require__(4);
+
+var _actions = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var EditBlog = function (_Component) {
+    _inherits(EditBlog, _Component);
+
+    function EditBlog(props) {
+        _classCallCheck(this, EditBlog);
+
+        var _this = _possibleConstructorReturn(this, (EditBlog.__proto__ || Object.getPrototypeOf(EditBlog)).call(this, props));
+
+        _this.state = {
+            title: "",
+            subject: "",
+            article: ""
+        };
+        _this.addArticle = _this.addArticle.bind(_this);
+        return _this;
+    }
+
+    _createClass(EditBlog, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            if (this.props.location.search.replace("?id=", ' ')) {
+                this.props.getSingleblog(this.props.location.search.replace("?id=", ' ').trim());
+            }
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            var editblogreducer = nextProps.editblogreducer,
+                history = nextProps.history;
+
+
+            if (editblogreducer && editblogreducer.editblog.success) {
+                this.state.title = editblogreducer.editblog.data.title;
+                this.state.subject = editblogreducer.editblog.data.subject;
+                this.state.article = editblogreducer.editblog.data.article;
+            }
+        }
+    }, {
+        key: 'onChange',
+        value: function onChange(field, value) {
+
+            var next = _extends({}, this.state, _defineProperty({}, field, value));
+
+            this.setState(next);
+        }
+    }, {
+        key: 'addArticle',
+        value: function addArticle() {
+            this.props.addblog(this.state);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(
+                    'div',
+                    { style: Style.formstyle },
+                    _react2.default.createElement('input', {
+                        type: 'text',
+                        name: 'title',
+                        className: 'input-xsmall',
+                        placeholder: 'Title',
+                        value: this.state.title,
+                        onChange: function onChange(e) {
+                            return _this2.onChange('title', e.target.value);
+                        }
+                    }),
+                    _react2.default.createElement('input', {
+                        type: 'text',
+                        name: 'subject',
+                        className: 'input-xsmall',
+                        placeholder: 'What\'s this article about?',
+                        value: this.state.subject,
+                        onChange: function onChange(e) {
+                            return _this2.onChange('subject', e.target.value);
+                        }
+                    }),
+                    _react2.default.createElement('textarea', {
+                        name: 'article',
+                        className: 'materialize-textarea',
+                        placeholder: 'Write your article (in markdown)',
+                        value: this.state.article,
+                        onChange: function onChange(e) {
+                            return _this2.onChange('article', e.target.value);
+                        }
+                    }),
+                    _react2.default.createElement(
+                        'a',
+                        { className: 'waves-effect waves-light btn', onClick: this.addArticle },
+                        'Update Article'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return EditBlog;
+}(_react.Component);
+
+var Style = exports.Style = {
+    formstyle: {
+        marginTop: 80,
+        border: "black"
+    }
+
+};
+function mapStateToProps(state) {
+    return state;
+}
+
+exports.default = {
+    component: (0, _reactRedux.connect)(mapStateToProps, { getSingleblog: _actions.getSingleblog })(EditBlog)
+
+};
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(2);
+
+var _actions = __webpack_require__(0);
 
 var _reactHelmet = __webpack_require__(3);
 
@@ -1314,7 +1618,7 @@ exports.default = {
 };
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1329,13 +1633,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(0);
 
 var _reactHelmet = __webpack_require__(3);
 
@@ -1506,7 +1810,7 @@ exports.default = {
 };
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1521,13 +1825,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1693,7 +1997,40 @@ exports.default = {
 };
 
 /***/ },
-/* 23 */
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case _actions.ADDBLOG:
+      console.log(">>>>>>>>>>>>>");
+      return {
+        addblog: action.payload.data
+      };
+    default:
+      return state;
+  }
+};
+
+var _actions = __webpack_require__(0);
+
+var initialState = {
+  addblog: {}
+};
+
+/***/ },
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1715,10 +2052,107 @@ exports.default = function () {
   }
 };
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(0);
 
 /***/ },
-/* 24 */
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case _actions.GETBLOG:
+      return {
+        getblog: action.payload.data
+      };
+    default:
+      return state;
+  }
+};
+
+var _actions = __webpack_require__(0);
+
+var initialState = {
+  getblog: {}
+};
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case _actions.DELETE_BLOG:
+      return {
+        deleteblog: action.payload.data
+      };
+    default:
+      return state;
+  }
+};
+
+var _actions = __webpack_require__(0);
+
+var initialState = {
+  deleteblog: {}
+};
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case _actions.GET_SINGLE_BLOG:
+      return {
+        editblog: action.payload.data
+      };
+    default:
+      return state;
+  }
+};
+
+var _actions = __webpack_require__(0);
+
+var initialState = {
+  getSingleblog: {}
+
+};
+
+/***/ },
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1730,21 +2164,33 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(8);
 
-var _userReducer = __webpack_require__(26);
+var _userReducer = __webpack_require__(31);
 
 var _userReducer2 = _interopRequireDefault(_userReducer);
 
-var _authReducer = __webpack_require__(23);
+var _authReducer = __webpack_require__(25);
 
 var _authReducer2 = _interopRequireDefault(_authReducer);
 
-var _metaReducer = __webpack_require__(25);
+var _metaReducer = __webpack_require__(30);
 
 var _metaReducer2 = _interopRequireDefault(_metaReducer);
 
-var _blogReducer = __webpack_require__(40);
+var _blogReducer = __webpack_require__(26);
 
 var _blogReducer2 = _interopRequireDefault(_blogReducer);
+
+var _editblogReducer = __webpack_require__(28);
+
+var _editblogReducer2 = _interopRequireDefault(_editblogReducer);
+
+var _addblogReducer = __webpack_require__(24);
+
+var _addblogReducer2 = _interopRequireDefault(_addblogReducer);
+
+var _deleteblogReducer = __webpack_require__(27);
+
+var _deleteblogReducer2 = _interopRequireDefault(_deleteblogReducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1752,11 +2198,14 @@ exports.default = (0, _redux.combineReducers)({
   admin: _userReducer2.default,
   auth: _authReducer2.default,
   meta: _metaReducer2.default,
-  blog: _blogReducer2.default
+  blog: _blogReducer2.default,
+  editblogreducer: _editblogReducer2.default,
+  createblog: _addblogReducer2.default,
+  deleteblogreducer: _deleteblogReducer2.default
 });
 
 /***/ },
-/* 25 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1766,7 +2215,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(0);
 
 exports.default = function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -1781,7 +2230,7 @@ exports.default = function () {
 };
 
 /***/ },
-/* 26 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1791,7 +2240,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(0);
 
 var _universalCookie = __webpack_require__(6);
 
@@ -1832,79 +2281,79 @@ exports.default = function () {
 };
 
 /***/ },
-/* 27 */
+/* 32 */
 /***/ function(module, exports) {
 
 module.exports = require("axios");
 
 /***/ },
-/* 28 */
+/* 33 */
 /***/ function(module, exports) {
 
 module.exports = require("material-ui/Dialog");
 
 /***/ },
-/* 29 */
+/* 34 */
 /***/ function(module, exports) {
 
 module.exports = require("material-ui/FlatButton");
 
 /***/ },
-/* 30 */
+/* 35 */
 /***/ function(module, exports) {
 
 module.exports = require("material-ui/FloatingActionButton");
 
 /***/ },
-/* 31 */
+/* 36 */
 /***/ function(module, exports) {
 
 module.exports = require("material-ui/RaisedButton");
 
 /***/ },
-/* 32 */
+/* 37 */
 /***/ function(module, exports) {
 
 module.exports = require("material-ui/styles/MuiThemeProvider");
 
 /***/ },
-/* 33 */
+/* 38 */
 /***/ function(module, exports) {
 
 module.exports = require("material-ui/styles/colors");
 
 /***/ },
-/* 34 */
+/* 39 */
 /***/ function(module, exports) {
 
 module.exports = require("material-ui/styles/getMuiTheme");
 
 /***/ },
-/* 35 */
+/* 40 */
 /***/ function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/content/add");
 
 /***/ },
-/* 36 */
+/* 41 */
 /***/ function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ },
-/* 37 */
+/* 42 */
 /***/ function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ },
-/* 38 */
+/* 43 */
 /***/ function(module, exports) {
 
 module.exports = require("serialize-javascript");
 
 /***/ },
-/* 39 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1916,7 +2365,7 @@ var _express = __webpack_require__(12);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _reactRouterConfig = __webpack_require__(4);
+var _reactRouterConfig = __webpack_require__(5);
 
 var _expressHttpProxy = __webpack_require__(13);
 
@@ -1977,33 +2426,6 @@ app.get('*', function (req, res) {
 app.listen(3050, function () {
   console.log('Listening on prot 3050');
 });
-
-/***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-  var action = arguments[1];
-
-  switch (action.type) {
-    case _actions.ADDBLOG:
-      return action.payload.data;
-    case _actions.GETBLOG:
-      return action.payload.data;
-    default:
-      return state;
-  }
-};
-
-var _actions = __webpack_require__(1);
 
 /***/ }
 /******/ ]);

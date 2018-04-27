@@ -65,12 +65,34 @@ export const addblog = (data) => async (dispatch, getState, api) => {
   });
 };
 export const GETBLOG = 'getblog';
-export const getblog = () => async (dispatch, getState, api) => {
+export const getblog = (page) => async (dispatch, getState, api) => {
 
- const res = await api.get('/getblog');
+ const res = await api.get('/getblog?page='+page);
  
   dispatch({
     type: GETBLOG,
+    payload: res
+  });
+};
+
+export const GET_SINGLE_BLOG = 'getSingleblog';
+export const getSingleblog = (data) => async (dispatch, getState, api) => {
+
+ const res = await api.get('/getSingleblog?ID='+data);
+ 
+  dispatch({
+    type: GET_SINGLE_BLOG,
+    payload: res
+  });
+};
+
+export const DELETE_BLOG = 'deleteblog';
+export const deleteblog = (data) => async (dispatch, getState, api) => {
+
+ const res = await api.get('/deleteblog?ID='+data);
+ 
+  dispatch({
+    type: DELETE_BLOG,
     payload: res
   });
 };
