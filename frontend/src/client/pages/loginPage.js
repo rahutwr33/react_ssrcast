@@ -40,8 +40,8 @@ class LoginPage extends Component {
   
   return (
     <Helmet>
-      <title>{`${this.props.meta.title}`}</title>
-      <meta name="description" content={`${this.props.meta.description}`}/>
+         <title>{`${this.props.meta.data.length>0 ? this.props.meta.title : 'Login'}`}</title>
+         <meta name="description" content={`${this.props.meta.data.length>0 ? this.props.meta.description : 'universal react'}`}/>
      </Helmet>
   );
 }

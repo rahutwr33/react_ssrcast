@@ -175,10 +175,11 @@ router.get('/current_user', function(req, res) {
   });
 
   router.get('/meta', function(req, res) {
-    Meta.findOne({path:req.query.path},function(err,metadata){
+    Meta.find({path:req.query.path},function(err,metadata){
       if(err){
         res.json({code:404,success:false,message:'something went wrong'})
       }else{
+        console.log(metadata)
         res.json({code:200,success:true,data:metadata})
       }
     })

@@ -7,6 +7,24 @@
 var app = require('../app');
 var debug = require('debug')('node-rest-auth:server');
 var http = require('http');
+var mongoose = require('mongoose');
+
+/* DB */
+var mongoose = require('mongoose');
+require('../models/blog')
+require('../models/meta');
+require('../models/user');
+
+
+
+mongoose.connect("mongodb://localhost:27017/reactssr");
+
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, "connection failed"));
+db.once('open', function() {
+    console.log("Database conencted successfully!");
+});
 
 /**
  * Get port from environment and store in Express.

@@ -5,14 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var mongoose = require('mongoose');
-var config = require('./config/database');
+
 const cors = require('cors'); // CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 
-mongoose.connect(config.database);
-mongoose.connection.on('connected', function(){
-    console.log("Mongoose default connection is open to "+config.database);
- });
+
 var api = require('./routes/api');
 
 var app = express();

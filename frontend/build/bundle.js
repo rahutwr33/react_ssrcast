@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -63,12 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 32);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -393,45 +393,45 @@ var deleteblog = exports.deleteblog = function deleteblog(data) {
   }();
 };
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = require("react");
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = require("react-redux");
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = require("react-helmet");
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = require("react-router-dom");
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = require("react-router-config");
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = require("universal-cookie");
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -499,15 +499,15 @@ exports.default = [_extends({}, _App2.default, {
   }), _extends({}, _NotFoundPage2.default)]
 })];
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = require("redux");
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -518,11 +518,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(8);
 
-var _reduxThunk = __webpack_require__(42);
+var _reduxThunk = __webpack_require__(43);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _axios = __webpack_require__(32);
+var _axios = __webpack_require__(33);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -543,9 +543,9 @@ exports.default = function (req) {
   return store;
 };
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -558,7 +558,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(41);
+var _server = __webpack_require__(42);
 
 var _reactRouterDom = __webpack_require__(4);
 
@@ -566,7 +566,7 @@ var _reactRedux = __webpack_require__(2);
 
 var _reactRouterConfig = __webpack_require__(5);
 
-var _serializeJavascript = __webpack_require__(43);
+var _serializeJavascript = __webpack_require__(44);
 
 var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
@@ -599,27 +599,27 @@ exports.default = function (req, store, context) {
   return '\n    <html>\n      <head>\n      <meta name="viewport" content="width=device-width, initial-scale=1"\n      <meta name="google-site-verification" content="oDJ04-rmm_oEAL4HXRgd8hS-W98r_qYHnrtPXhaOFLc" />\n        ' + helmet.title.toString() + '\n        ' + helmet.meta.toString() + '\n        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M" crossorigin="anonymous"></script>\n        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">\n        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>\n      \n        </head>\n      <body>\n        <div id="root">' + content + '</div>\n        <script>\n          window.INITIAL_STATE = ' + (0, _serializeJavascript2.default)(store.getState()) + '\n        </script>\n        <script src="bundle.js"></script>\n      </body>\n    </html>\n  ';
 };
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = require("babel-polyfill");
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = require("express");
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = require("express-http-proxy");
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -697,9 +697,9 @@ exports.default = {
   component: (0, _reactRedux.connect)(mapStateToProps)(App)
 };
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -838,9 +838,9 @@ var Style = exports.Style = {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, { logoutuser: _actions.logoutuser })(Header);
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -871,9 +871,9 @@ exports.default = {
   component: NotFoundPage
 };
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1021,9 +1021,9 @@ exports.default = {
 
 };
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1036,15 +1036,15 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Dialog = __webpack_require__(33);
+var _Dialog = __webpack_require__(34);
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _FlatButton = __webpack_require__(34);
+var _FlatButton = __webpack_require__(35);
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
-var _RaisedButton = __webpack_require__(36);
+var _RaisedButton = __webpack_require__(37);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
@@ -1087,9 +1087,9 @@ var blogDialog = function blogDialog(props) {
 
 exports.default = blogDialog;
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1118,21 +1118,21 @@ var _blogDialog2 = _interopRequireDefault(_blogDialog);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _getMuiTheme = __webpack_require__(39);
+var _getMuiTheme = __webpack_require__(40);
 
 var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
 
-var _MuiThemeProvider = __webpack_require__(37);
+var _MuiThemeProvider = __webpack_require__(38);
 
 var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 
-var _colors = __webpack_require__(38);
+var _colors = __webpack_require__(39);
 
-var _FloatingActionButton = __webpack_require__(35);
+var _FloatingActionButton = __webpack_require__(36);
 
 var _FloatingActionButton2 = _interopRequireDefault(_FloatingActionButton);
 
-var _add = __webpack_require__(40);
+var _add = __webpack_require__(41);
 
 var _add2 = _interopRequireDefault(_add);
 
@@ -1203,9 +1203,9 @@ var Dashboard = function (_Component) {
         _react2.default.createElement(
           'title',
           null,
-          '' + this.props.meta.title
+          '' + (this.props.meta.data.length > 0 ? this.props.meta.title : 'Dashboard')
         ),
-        _react2.default.createElement('meta', { name: 'description', content: '' + this.props.meta.description })
+        _react2.default.createElement('meta', { name: 'description', content: '' + (this.props.meta.data.length > 0 ? this.props.meta.description : 'universal react') })
       );
     }
   }, {
@@ -1213,6 +1213,11 @@ var Dashboard = function (_Component) {
     value: function getPaginateBlogData(page) {
       this.setState({ paginateKey: page });
       this.props.getblog(page);
+    }
+  }, {
+    key: 'getDerivedStateFromProps',
+    value: function getDerivedStateFromProps(props, state) {
+      console.log(props, state);
     }
   }, {
     key: 'render',
@@ -1338,6 +1343,7 @@ var Dashboard = function (_Component) {
 ;
 
 function mapStateToProps(state) {
+
   return state;
 }
 
@@ -1351,9 +1357,9 @@ exports.default = {
 
 };
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1506,9 +1512,9 @@ exports.default = {
 
 };
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1570,9 +1576,9 @@ var HomePage = function (_Component) {
         _react2.default.createElement(
           'title',
           null,
-          '' + this.props.meta.title
+          '' + (this.props.meta.data.length > 0 ? this.props.meta.title : 'Hompage')
         ),
-        _react2.default.createElement('meta', { name: 'description', content: '' + this.props.meta.description })
+        _react2.default.createElement('meta', { name: 'description', content: '' + (this.props.meta.data.length > 0 ? this.props.meta.description : 'universal react') })
       );
     }
   }, {
@@ -1617,9 +1623,9 @@ exports.default = {
 
 };
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1711,9 +1717,9 @@ var LoginPage = function (_Component) {
         _react2.default.createElement(
           'title',
           null,
-          '' + this.props.meta.title
+          '' + (this.props.meta.data.length > 0 ? this.props.meta.title : 'Login')
         ),
-        _react2.default.createElement('meta', { name: 'description', content: '' + this.props.meta.description })
+        _react2.default.createElement('meta', { name: 'description', content: '' + (this.props.meta.data.length > 0 ? this.props.meta.description : 'universal react') })
       );
     }
   }, {
@@ -1809,9 +1815,9 @@ exports.default = {
 
 };
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1996,9 +2002,9 @@ exports.default = {
   component: (0, _reactRedux.connect)(mapStateToProps, { registerUser: _actions.registerUser })(RegisterPage)
 };
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2029,9 +2035,9 @@ var initialState = {
   addblog: {}
 };
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2054,9 +2060,9 @@ exports.default = function () {
 
 var _actions = __webpack_require__(0);
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2086,9 +2092,9 @@ var initialState = {
   getblog: {}
 };
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2118,9 +2124,9 @@ var initialState = {
   deleteblog: {}
 };
 
-/***/ },
+/***/ }),
 /* 28 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2151,9 +2157,9 @@ var initialState = {
 
 };
 
-/***/ },
+/***/ }),
 /* 29 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2204,9 +2210,9 @@ exports.default = (0, _redux.combineReducers)({
   deleteblogreducer: _deleteblogReducer2.default
 });
 
-/***/ },
+/***/ }),
 /* 30 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2218,20 +2224,20 @@ Object.defineProperty(exports, "__esModule", {
 var _actions = __webpack_require__(0);
 
 exports.default = function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   var action = arguments[1];
 
   switch (action.type) {
     case _actions.META:
-      return action.payload.data;
+      return action.payload;
     default:
       return state;
   }
 };
 
-/***/ },
+/***/ }),
 /* 31 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2280,81 +2286,9 @@ exports.default = function () {
   }
 };
 
-/***/ },
+/***/ }),
 /* 32 */
-/***/ function(module, exports) {
-
-module.exports = require("axios");
-
-/***/ },
-/* 33 */
-/***/ function(module, exports) {
-
-module.exports = require("material-ui/Dialog");
-
-/***/ },
-/* 34 */
-/***/ function(module, exports) {
-
-module.exports = require("material-ui/FlatButton");
-
-/***/ },
-/* 35 */
-/***/ function(module, exports) {
-
-module.exports = require("material-ui/FloatingActionButton");
-
-/***/ },
-/* 36 */
-/***/ function(module, exports) {
-
-module.exports = require("material-ui/RaisedButton");
-
-/***/ },
-/* 37 */
-/***/ function(module, exports) {
-
-module.exports = require("material-ui/styles/MuiThemeProvider");
-
-/***/ },
-/* 38 */
-/***/ function(module, exports) {
-
-module.exports = require("material-ui/styles/colors");
-
-/***/ },
-/* 39 */
-/***/ function(module, exports) {
-
-module.exports = require("material-ui/styles/getMuiTheme");
-
-/***/ },
-/* 40 */
-/***/ function(module, exports) {
-
-module.exports = require("material-ui/svg-icons/content/add");
-
-/***/ },
-/* 41 */
-/***/ function(module, exports) {
-
-module.exports = require("react-dom/server");
-
-/***/ },
-/* 42 */
-/***/ function(module, exports) {
-
-module.exports = require("redux-thunk");
-
-/***/ },
-/* 43 */
-/***/ function(module, exports) {
-
-module.exports = require("serialize-javascript");
-
-/***/ },
-/* 44 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2427,5 +2361,77 @@ app.listen(3050, function () {
   console.log('Listening on prot 3050');
 });
 
-/***/ }
+/***/ }),
+/* 33 */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/Dialog");
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/FlatButton");
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/FloatingActionButton");
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/RaisedButton");
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/styles/MuiThemeProvider");
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/styles/colors");
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/styles/getMuiTheme");
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/svg-icons/content/add");
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-dom/server");
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-thunk");
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports) {
+
+module.exports = require("serialize-javascript");
+
+/***/ })
 /******/ ]);

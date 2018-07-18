@@ -26,7 +26,7 @@ class Dashboard extends Component {
 
   componentWillMount() {
     if(!this.props.auth.success){
-      this.props.history.push('/')
+       this.props.history.push('/')
      }
   }
   
@@ -57,8 +57,8 @@ class Dashboard extends Component {
   head(){
     return (
       <Helmet>
-         <title>{`${this.props.meta.title}`}</title>
-         <meta name="description" content={`${this.props.meta.description}`}/>
+         <title>{`${this.props.meta.data.length>0 ? this.props.meta.title : 'Dashboard'}`}</title>
+         <meta name="description" content={`${this.props.meta.data.length>0 ? this.props.meta.description : 'universal react'}`}/>
       </Helmet>
     );
   }
@@ -66,6 +66,10 @@ class Dashboard extends Component {
   getPaginateBlogData(page){
     this.setState({paginateKey:page})
     this.props.getblog(page);
+  }
+
+  getDerivedStateFromProps(props, state){
+    console.log(props,state)
   }
 
   render(){
@@ -147,6 +151,7 @@ class Dashboard extends Component {
 };
 
 function mapStateToProps(state) {
+  
   return state
 }
 
